@@ -1,0 +1,54 @@
+# Python bytecode files
+*.pyc
+*.pyo
+__pycache__
+
+# Django migrations
+*.log
+*.sqlite3
+*.db
+*.pot
+*.pyc
+*.pyo
+__pycache__
+
+# Virtual environment
+venv/
+.env/
+
+# IDE or editor-specific files
+.vscode/
+.idea/
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+
+# Media files 
+media/
+
+# Backup files 
+*~
+
+# Django secret key file 
+secret_key.txt
+
+# Database files
+*.sqlite3
+
+# Logs
+*.log
+
+# Coverage reports
+.coverage
+*.cover
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# Docker files
+docker-compose.yml
+Dockerfile

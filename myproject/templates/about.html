@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    About Us
+{% endblock %}
+    
+{% block Style %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <h1>About This Application</h1>
+
+    <p>Welcome to Blogify, a simple yet powerful BlogVibe platform built with Django.</p>
+
+    <div class="about-details">
+        <h2>What We Offer</h2>
+        <ul>
+            <li>📝 Write and share your posts with the community.</li>
+            <li>📚 Browse and read posts from other users.</li>
+             <li>🔒 Stay safe with secure authentication and user management.</li>
+        </ul>
+
+        <h2>Our Mission</h2>
+        <p>We aim to create a platform where users can easily create and read posts. We want to foster creativity and knowledge-sharing, all within a secure and user-friendly environment.</p>
+    </div>
+
+    {% if user.is_authenticated %}
+        <div class="cta">
+            <p>As an authenticated user, you can:</p>
+            <a href="{% url 'posts:new-post' %}" class="button">Create a New Post</a>
+            <a href="{% url 'posts:list' %}" class="button secondary">View Your Posts</a>
+        </div>
+    {% else %}
+        <p>If you're not logged in yet, feel free to join us:</p>
+        <div class="cta">
+            <a href="{% url 'users:register' %}" class="button">Register</a>
+            <a href="{% url 'users:login' %}" class="button secondary">Login</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

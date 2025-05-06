@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    Posts
+{% endblock %}
+
+{% block Style %}
+    <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section >
+    <h1>Posts </h1>
+    {% for post in posts %}
+        <article class="Posts"> 
+            <a href="{% url 'posts:page' slug=post.slug %}">
+                {{ post.title }}
+            </a>
+            <p>{{ post.body }}</p>
+            <p>{{ post.date }} By {{ post.author}}</p>
+        </article>
+    {% endfor %}
+
+    </section >
+{% endblock %}

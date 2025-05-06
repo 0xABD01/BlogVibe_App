@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block Style %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <h1>Welcome to BlogVibe</h1>
+
+    {% if user.is_authenticated %}
+        <p>Hello, <strong>{{ user.username }}</strong>! 👋</p>
+        <p>You can create a new post or browse recent content.</p>
+
+        <div class="cta">
+            <a href="{% url 'posts:new-post' %}" class="button">Create a New Post</a>
+            <a href="{% url 'posts:list' %}" class="button secondary">View All Posts</a>
+        </div>
+    {% else %}
+        <p>This is a simple Django BlogVibe platform.</p>
+        <div class="features">
+            <h2>Why Join?</h2>
+            <ul>
+                <li>📝 Write your own posts</li>
+                <li>📚 Read blog content from others</li>
+            </ul>
+        </div>
+
+        <div class="cta">
+            <p>New here? Get started below!</p>
+            <a href="{% url 'users:register' %}" class="button">Register</a>
+            <a href="{% url 'users:login' %}" class="button secondary">Log In</a>
+        </div>
+    {% endif %}
+
+    <div class="latest-posts">
+        <h2>Latest Posts</h2>
+        {% if latest_posts %}
+            <ul>
+                {% for post in latest_posts %}
+                    <li>
+                        <a href="{% url 'posts:page' slug=post.slug %}">{{ post.title }}</a>
+                        <span>by {{ post.author }} on {{ post.date }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No posts yet. Be the first to create one!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

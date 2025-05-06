@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{post.title }}
+{% endblock %}
+
+{% block Style %}
+    <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section >
+        <img 
+            class="banner"  
+            src="{{ post.banner.url }}" 
+            alt="{{post.title}}" 
+        />
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.body }}</p>
+        <p>{{ post.date }}</p>  
+    </section >
+{% endblock %}
